@@ -11,14 +11,14 @@ Database database;
 // DateTime defaultDueTime = DateTime(2025, 1, 1);
 
 int main(){
-    //打开App
+    // 打开App
     monitor.initialize();
     database.initialize();
 
-    //用户登录
+    // 用户登录
     monitor.userLogin(&database);
 
-    //任务管理主界面
+    // 任务管理主界面
     monitor.mainFunction();
 
 	system("pause");
