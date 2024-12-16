@@ -10,7 +10,7 @@ Database database;
 // DateTime defaultCreateTime = DateTime(2024,1,1);
 // DateTime defaultDueTime = DateTime(2025, 1, 1);
 
-int main(){
+int main() {
     // 打开App
     monitor.initialize();
     database.initialize();
@@ -20,7 +20,6 @@ int main(){
 
     // 任务管理主界面
     monitor.mainFunction();
-
-	system("pause");
+    system("pause");
     return 0;
 }
