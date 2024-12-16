@@ -1,5 +1,5 @@
-#ifndef _USER_H
-#define _USER_H
+#ifndef USER_H_
+#define USER_H_
 
 #include<iostream>
 #include<string>
@@ -7,11 +7,11 @@
 #include"TaskManager.h"
 class TaskManager;
 
-enum Role{
+enum Role {
     STUDENT, WORKER
 };
 
-class User{
+class User {
     string username;
     string password;
     Role role;
@@ -19,8 +19,8 @@ class User{
 
     friend class Database;
     friend class Monitor;
-    User(string n = "", string p = "", Role r = STUDENT):
+    User(string n = "", string p = "", Role r = STUDENT): \
         username(n), password(p), role(r){}
 };
 
-#endif
+#endif  // USER_H_
