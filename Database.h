@@ -1,6 +1,6 @@
-#ifndef _DATABASE_H
-#define _DATABASE_H
-//模拟真实App中的数据库部分
+#ifndef DATABASE_H_
+#define DATABASE_H_
+// 模拟真实App中的数据库部分
 
 #include<iostream>
 #include<vector>
@@ -12,17 +12,18 @@ class User;
 class Database{
     vector<User> userList;
     friend class Monitor;
-public:   
-    void initialize();  
+ public:
+    void initialize();
     void addUser(User* user);
 };
 
-void Database::initialize(){
-    //放入两个已有用户
+void Database::initialize() {
+    // 放入两个已有用户
     User user1;
     user1.username = "njucs";
     user1.password = "123";
-    user1.taskmanager.createTask("A-task", "Description of A", STUDY, IMPORTANT, defaultCreateTime, defaultDueTime);
+    user1.taskmanager.createTask("A-task", "Description of A", \
+        STUDY, IMPORTANT, defaultCreateTime, defaultDueTime);
     user1.taskmanager.createTask("B-task", "Description of dear task B");
     User user2;
     user2.username = "user";
@@ -31,8 +32,8 @@ void Database::initialize(){
     userList.insert(userList.begin(), user2);
 }
 
-void Database::addUser(User* user){
+void Database::addUser(User* user) {
     userList.insert(userList.begin(), *user);
 }
 
-#endif
+#endif  // DATABASE_H_
