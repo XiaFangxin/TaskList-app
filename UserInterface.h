@@ -1,13 +1,11 @@
-#ifndef USERINTERFACE_H_
-#define USERINTERFACE_H_
+#ifndef _USERINTERFACE_H
+#define _USERINTERFACE_H
 
 #include<string>
-#include<vector>
-#include<iostream>
 #include"TaskManager.h"
 class Task;
 
-class UserInterface {
+class UserInterface{
     vector<Task>* showList;
     string input1;
     string input2;
@@ -29,25 +27,25 @@ class UserInterface {
     friend class Monitor;
 };
 
-void UserInterface::initialize() {
+void UserInterface::initialize(){
     cout << "*******************************" << endl << endl;
     cout << "   Welcome to TaskList App!!!" << endl << endl;
     cout << "*******************************" << endl << endl;
     system("pause");
 }
 
-void UserInterface::userLogin() {
+void UserInterface::userLogin(){
     system("cls");
-    cout << "*******************************" << endl;
+    cout << "*******************************" << endl ;
     cout << "User Login" << endl << endl;
-    cout << "*******************************" << endl;
-    cout << "Username: ";
+    cout << "*******************************" << endl ;
+    cout << "Username: " ;
     cin >> input1;
     cout << "Password: ";
     cin >> input2;
 }
 
-void UserInterface::mainFunctionInterface() {
+void UserInterface::mainFunctionInterface(){
     system("cls");
     cout << "*******************************" << endl;
     cout << "Task List APP"<< endl << endl;
@@ -55,50 +53,37 @@ void UserInterface::mainFunctionInterface() {
     printTaskList();
     cout << "*******************************" << endl;
     cout << "Operation: " << endl;
-    cout << "1. Add Task  2. Edit Task  " \
-        << "3. Delete Task  4. Filter Tasks by Tag" << endl;
-    cout << "5. Get Tasks By Priority   "\
-        << "6. Get Tasks By CreateDate  7. Get Tasks By DueDate" << endl;
+    cout << "1. Add Task  2. Edit Task  3. Delete Task  4. Filter Tasks by Tag" << endl;
+    cout << "5. Get Tasks By Priority   6. Get Tasks By CreateDate  7. Get Tasks By DueDate" << endl;
     cin >> inputNum;
 }
 
-void UserInterface::printTaskList() {
-    if (showList== nullptr || showList->empty()) {
+void UserInterface::printTaskList(){
+    if(showList== nullptr || showList->empty()){
         cout << "No Task Yet" << endl;
         return;
     }
     int count = 1;
-    for (vector<Task>::iterator iter = showList->begin(); \
-        iter != showList->end(); iter++) {
+    for(vector<Task>::iterator iter = showList->begin();
+        iter != showList->end(); iter++){
             cout << count << ": "<< iter->name << endl;
             cout << "\t" << iter->description << endl<< endl;
             count++;
         }
 }
 
-void UserInterface::addTaskInterface() {
+void UserInterface::addTaskInterface(){
     system("cls");
     cout << "*******************************" << endl;
     cout << "Add Task"<< endl << endl;
-    cout << "*******************************" << endl;
-    cout << "Taskname: ";  // NOTE: 注意有的task name或description会携带空格
-    char tempChar;
-    input1 = "";
-    cin >> tempChar;
-    while (tempChar != '\n') {
-        input1 += tempChar;
-        tempChar = getchar();
-    }
+    cout << "*******************************" << endl; 
+    cout << "Taskname: ";//NOTE: 注意有的task name或description会携带空格
+    std::getline(std::cin >> std::ws, input1);
     cout << "Description: ";
-    input2 = "";
-    cin >> tempChar;
-    while (tempChar != '\n') {
-        input2 += tempChar;
-        tempChar = getchar();
-    }
-    INPUT_TAG: cout << "Tag: 1.STUDY  2.LIFE  3.WORK  4.OTHER_TAG" << endl;
+    std::getline(std::cin >> std::ws, input2);
+    INPUT_TAG: cout << "Tag: 1.STUDY  2.LIFE  3.WORK  4.OTHER_TAG" <<endl;
     cin >> inputNum;
-    switch (inputNum) {
+    switch(inputNum){
         case 1:
             inputTag = STUDY; break;
         case 2:
@@ -111,10 +96,9 @@ void UserInterface::addTaskInterface() {
             cout << "Wrong choice number!";
             goto INPUT_TAG;
     }
-    INPUT_PRIORITY: cout << "Priority: 1.URGENT  " << \
-        "2.IMPORTANT  3.OTHER_PRIORITY" << endl;
+    INPUT_PRIORITY: cout << "Priority: 1.URGENT  2.IMPORTANT  3.OTHER_PRIORITY" << endl;
     cin >> inputNum;
-    switch (inputNum) {
+    switch(inputNum){
         case 1:
             inputPriority = URGENT; break;
         case 2:
@@ -134,22 +118,22 @@ void UserInterface::addTaskInterface() {
     dDate = DateTime(year, month, day);
 }
 
-void UserInterface::editTaskInterface() {
+void UserInterface::editTaskInterface(){
     system("cls");
     cout << "*******************************" << endl;
     cout << "Edit Task"<< endl << endl;
-    cout << "*******************************" << endl;
+    cout << "*******************************" << endl; 
     cout << "Temp Task:" << endl;
     printTaskList();
-    cout << "*******************************" << endl;
-    EditNum: cout << "Choose your task number:";
+    cout << "*******************************" << endl; 
+    EditNum: cout << "Choose your task number:" ;
     cin >> inputNum;
-    if (inputNum > showList->size()) {
+    if(inputNum > showList->size()){
         cout << "Wrong number !" <<endl;
         goto EditNum;
     }
     vector<Task>::iterator iter = showList->begin();
-    while (inputNum != 1) {
+    while(inputNum != 1){
         inputNum--;
         iter++;
     }
@@ -162,7 +146,7 @@ void UserInterface::editTaskInterface() {
     cin >> input2;
     INPUT_TAG: cout << "Tag: 1.STUDY  2.LIFE  3.WORK  4.OTHER_TAG" <<endl;
     cin >> inputNum;
-    switch (inputNum) {
+    switch(inputNum){
         case 1:
             inputTag = STUDY; break;
         case 2:
@@ -175,10 +159,9 @@ void UserInterface::editTaskInterface() {
             cout << "Wrong choice number!";
             goto INPUT_TAG;
     }
-    INPUT_PRIORITY: cout << "Priority: 1.URGENT  2.IMPORTANT  " << \
-        "3.OTHER_PRIORITY" << endl;
+    INPUT_PRIORITY: cout << "Priority: 1.URGENT  2.IMPORTANT  3.OTHER_PRIORITY" << endl;
     cin >> inputNum;
-    switch (inputNum) {
+    switch(inputNum){
         case 1:
             inputPriority = URGENT; break;
         case 2:
@@ -198,46 +181,46 @@ void UserInterface::editTaskInterface() {
     dDate = DateTime(year, month, day);
 }
 
-void UserInterface::printTask(Task* temptask) {
+void UserInterface::printTask(Task* temptask){
     cout << "*******************************" << endl;
     cout << "Task Information" << endl;
     cout << "Task name:\t" << temptask->name << endl;
     cout << "Description:\t" << temptask->description << endl;
-    cout << "Tag:\t" << temptask->getTag() << endl;
+    cout << "Tag:\t" << temptask->getTag() << endl; 
     cout << "Priority:\t" << temptask->getPriority() << endl;
     cout << "CreateDate:\t" << temptask->getCreateDate() << endl;
     cout << "DueDate:\t" << temptask->getDueDate() << endl;
     cout << "*******************************" << endl;
 }
 
-Task* UserInterface::deleteTaskInterface() {
+Task* UserInterface::deleteTaskInterface(){
     system("cls");
     cout << "*******************************" << endl;
     cout << "Delete Task"<< endl << endl;
-    cout << "*******************************" << endl;
+    cout << "*******************************" << endl; 
     cout << "Temp Task:" << endl;
     printTaskList();
-    cout << "*******************************" << endl;
-    EditNum: cout << "Choose your task number:";
+    cout << "*******************************" << endl; 
+    EditNum: cout << "Choose your task number:" ;
     cin >> inputNum;
-    if (inputNum > showList->size()) {
+    if(inputNum > showList->size()){
         cout << "Wrong number !" <<endl;
         goto EditNum;
-    }
+    }  
     vector<Task>::iterator iter = showList->begin();
-    while (inputNum != 1) {
+    while(inputNum != 1){
         inputNum--;
         iter++;
     }
     return &(*iter);
 }
 
-void UserInterface::filterTagInterface() {
+void UserInterface::filterTagInterface(){
     cout << "*******************************" << endl;
-    ChooseTag: cout << "Choose one tag: "<< endl;
+    ChooseTag: cout << "Choose one tag: "<< endl ;
     cout << "1.STUDY  2.LIFE  3.WORK  4.OTHER_TAG" << endl;
     cin >> inputNum;
-    switch (inputNum) {
+    switch(inputNum){
         case 1:
             inputTag = STUDY;
             break;
@@ -251,9 +234,9 @@ void UserInterface::filterTagInterface() {
             inputTag = OTHER_TAG;
             break;
         default:
-            cout << "Wrong number!";
+            cout << "Wrong number!" ;
             goto ChooseTag;
     }
 }
 
-#endif  // USERINTERFACE_H_
+#endif

@@ -1,0 +1,37 @@
+{
+    "1": {
+        "CWE": "CWE-401",
+        "name": "Memory Leak",
+        "file": "project/main.cpp",
+        "line": 39,
+        "at": "void memoryLeak()"
+    },
+    "2": {
+        "CWE": "CWE-415",
+        "name": "Double Free",
+        "file": "project/main.cpp",
+        "line": 45,
+        "at": "void doubleFree()"
+    },
+    "3": {
+        "CWE": "CWE-476",
+        "name": "Null Pointer Dereference",
+        "file": "project/main.cpp",
+        "line": 51,
+        "at": "void nullPointerDereference()"
+    },
+    "4": {
+        "CWE": "CWE-398",
+        "name": "Inefficient String Concatenation",
+        "file": "project/TaskManager.h",
+        "line": 173,
+        "at": "string Task::getCreateDate"
+    },
+    "5": {
+        "CWE": "CWE-20",
+        "name": "Improper Input Handling",
+        "file": "project/UserInterface.h",
+        "line": 87,
+        "at": "cin >> tempChar"
+    }
+}
