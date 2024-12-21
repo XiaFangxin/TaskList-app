@@ -1,0 +1,23 @@
+{
+    "1": {
+        "CWE": "CWE-415",
+        "name": "Duplicate Include Guards",
+        "file": "project/TaskManager.h",
+        "line": 1,
+        "at": "#ifndef TASKMANAGER_H_"
+    },
+    "2": {
+        "CWE": "CWE-20",
+        "name": "Parameter Name Typo",
+        "file": "project/TaskManager.h",
+        "line": 70,
+        "at": "void createTask"
+    },
+    "3": {
+        "CWE": "CWE-20",
+        "name": "Private Constructor Without Public Interface",
+        "file": "project/User.h",
+        "line": 22,
+        "at": "User(string n = \"\", string p = \"\", Role r = STUDENT)"
+    }
+}
