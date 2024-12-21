@@ -97,7 +97,8 @@ void TaskManager::deleteTask(Task* task) {
             break;
         iter++;
     }
-    taskList.erase(iter);
+    if (iter != taskList.end())  // error found by cppcheck
+        taskList.erase(iter);
 }
 
 vector<Task>* TaskManager::filterTasks(Tag tag) {

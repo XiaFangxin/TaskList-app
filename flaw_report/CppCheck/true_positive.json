@@ -1,0 +1,58 @@
+{
+    "1": {  
+        "CWE": "CWE-401",
+        "Name": "memLeak",
+        "Description": "Memory leak: ptr",
+        "File": "main.cpp",
+        "Line": "43",
+        "At": "}"
+    },
+    "2": {
+        "CWE": "CWE-415",
+        "Name": "doubleFree",
+        "Description": "Memory pointed to by ptr is freed twice",
+        "File": "main.cpp",
+        "Line": "48",
+        "At": "delete[] ptr;"
+    },
+    "3": {
+        "CWE": "CWE-476",
+        "Name": "nullPointer",
+        "Description": "Null pointer dereference: ptr",
+        "File": "main.cpp",
+        "Line": "43",
+        "At": "*ptr = 10;"
+    },
+    "4": {
+        "CWE": "CWE-398",
+        "Name": "constVariablePointer",
+        "Description": "Variable otr can be declared as pointer to const",
+        "File": "main.cpp",
+        "Line": "40",
+        "At": "int* ptr = new int[10];"
+    },
+    "5": {
+        "CWE": "CWE-457",
+        "Name": "uninitdata",
+        "Description": "Memory is allocated but not initialized: ptr",
+        "File": "main.cpp",
+        "Line": "47",
+        "At": "delete[] ptr;"
+    },
+    "6": {
+        "CWE": "CWE-563",
+        "Name": "unreadVariable",
+        "Description": "Variable ptr is assigned a value that is never read",
+        "File": "main.cpp",
+        "Line": "40",
+        "At": "int *ptr = new int[10];"
+    },
+    "7": {
+        "CWE": "CWE-628",
+        "Name": "eraseIteratorOutOfBoundsCond",
+        "Description": "Either the condition 'iter!=taskList.end()' is redundant or function 'erase()' is called on the iterator 'iter' which is out of bounds.",
+        "File": "TaskManager.h",
+        "Line": "100",
+        "At": "taskList.erase(iter);"
+    }
+}
